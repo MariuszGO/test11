@@ -6,11 +6,27 @@
     <title>Pliki</title>
 </head>
 <body>
+        <form>
+            <label for="imie"> Podaj imie</label>
+            <input type="text" name="imie" id="imie">
+            <button>Zapisz</button>
+        </form>
+    
     <?php
 
-    $plik = fopen("dane.txt","a");
+    //w zapisuje do pliku niszcząc starą zawartość
+    //a dopisuje do pliku
+    //r odczytyuje z pliku
 
-    fwrite($plik,"cos \n");
+    echo @$_GET["imie"];
+
+
+    $plik = fopen("dane.txt","a");
+    if($plik == false){
+        "Błąd";
+    }
+
+    fwrite($plik,@$_GET["imie"] . " ");
     fclose($plik);
     echo "test";
 
